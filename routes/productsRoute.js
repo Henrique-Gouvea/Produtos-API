@@ -7,4 +7,4 @@ productsRouter.post('/', controllers.getAllProducts);
 
 productsRouter.post('/:id', controllers.getProduct);
 
-module.exports = loginRouter;
+module.exports = productsRouter;
