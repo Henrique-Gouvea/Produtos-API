@@ -6,7 +6,7 @@ const getProduct = async (req, res) => {
     const product = await services.getProduct();
     return res.status(OK).json(product);
   } catch (error) {
-    return res.status(NOT_FOUND).json('Product not found');
+    return res.status(NOT_FOUND).json({ message: 'Product not found' });
   }
 };
 
