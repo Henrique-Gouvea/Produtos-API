@@ -1,11 +1,10 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const { productsRoute, salesRoute } = require('./routes');
 
-const PORT = '3001';
-
 const app = express();
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(express.json());
 
 app.use('/products', productsRoute);
 
@@ -15,8 +14,6 @@ app.use('/sales', salesRoute);
 app.get('/', (_request, response) => {
   response.send();
 });
-
-app.listen(PORT, () => { console.log(`Online in port ${PORT}`); });
 
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima

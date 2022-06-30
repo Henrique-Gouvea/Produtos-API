@@ -1,6 +1,10 @@
-const getAllProducts = async () => {
+const models = require('../../models');
 
-  // return products;
+const getAllProducts = async () => {
+  const result = await models.getAllProducts();
+  console.log(`service: ${result}`);
+  // if (!result) return [];
+  return result;
 };
 
 module.exports = getAllProducts;
