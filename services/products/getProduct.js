@@ -1,6 +1,8 @@
-const getProduct = async () => {
+const models = require('../../models');
 
-  // return products;
+const getProduct = async (id) => {
+  const product = await models.getProduct(id);
+  return product;
 };
 
 module.exports = getProduct;
