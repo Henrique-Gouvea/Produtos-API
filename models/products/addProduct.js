@@ -9,7 +9,6 @@ const addProduct = async (name) => {
     id: row.insertId,
     name,
   };
-  console.log(result);
   return result;
 };
 
