@@ -4,10 +4,10 @@ const productSchema = Joi.object({
   name: Joi
     .string()
     .required()
-    .min(3)
+    .min(5)
     .messages({
-      'string.min': 'O "name" deve ter pelo menos 3 caracteres',
-      'any.required': 'O campo "name" é obrigatório',
+      'string.min': '"name" length must be at least 5 characters long',
+      'any.required': '"name" is required',
     }),
 }).required();
 
