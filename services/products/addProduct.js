@@ -2,13 +2,10 @@ const schema = require('../../schemas');
 const model = require('../../models');
 
 const addProduct = async (name) => {
-  const { error } = schema.productSchema(name);
-  console.log(error.message);
+  const { error } = schema.productSchema.validate({ name });
   if (error) return { message: error.message };
-  console.log(name);
   const product = await model.addProduct(name);
-  console.log(`services ${product}`);
-  return { id: product.insertId, name };
+  return product;
 };
 
 module.exports = addProduct;

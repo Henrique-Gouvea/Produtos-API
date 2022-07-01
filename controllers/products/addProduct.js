@@ -4,8 +4,8 @@ const { CREATED, INTERNAL_SERVER, BAD_REQUEST } = require('../../helpers/httpSta
 const addProduct = async (req, res) => {
   try {
     const { name } = req.body;
-    console.log(req.body);
-    const product = await services.getProduct(name);
+    console.log(name);
+    const product = await services.addProduct(name);
     console.log(product);
     if (product.message) return res.status(BAD_REQUEST).send(product.message);
 
