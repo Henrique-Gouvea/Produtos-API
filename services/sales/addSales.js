@@ -1,16 +1,28 @@
 const models = require('../../models');
 const salesValidate = require('../../validate/salesValidate');
+const { NOT_FOUND } = require('../../helpers/httpStatusCodes');
 
 const addSales = async (newSales) => {
-  console.log(newSales);
   const salesValid = await salesValidate(newSales);
-  console.log(salesValid);
-  if (salesValid.message) {
- return {
-    message: salesValid.message,
-    statusError: salesValid.statusError,
-  }; 
-}
+
+  if (salesValid) {
+    return {
+     message: salesValid.message,
+     statusError: salesValid.statusError,
+    }; 
+  }
+
+  const allProducts = await models.getAllProducts();
+  let noHaveProduct = false;
+
+  newSales.forEach((sales) => {
+    if (!allProducts.some((product) => product.id === sales.productId)) {
+      noHaveProduct = true;
+    }
+  });
+  
+  if (noHaveProduct) return { message: 'Product not found', statusError: NOT_FOUND };
+  
   const result = await models.addSales(newSales);
   return result;
 };
