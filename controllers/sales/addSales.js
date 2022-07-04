@@ -1,4 +1,4 @@
-const { OK, INTERNAL_SERVER, BAD_REQUEST } = require('../../helpers/httpStatusCodes');
+const { CREATED, INTERNAL_SERVER, BAD_REQUEST } = require('../../helpers/httpStatusCodes');
 const services = require('../../services');
 
 const addSales = async (req, res) => {
@@ -16,7 +16,7 @@ const addSales = async (req, res) => {
       return res.status(sales.statusError).send({ message: sales.message });
     } 
 
-    return res.status(OK).json(sales);
+    return res.status(CREATED).json(sales);
   } catch (error) {
     res.status(INTERNAL_SERVER).json(`server error: ${error}`);
   }
