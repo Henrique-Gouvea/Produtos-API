@@ -1,6 +1,5 @@
 const models = require('../../models');
 const salesValidate = require('../../validate/salesValidate');
-const { NOT_FOUND } = require('../../helpers/httpStatusCodes');
 
 const addSales = async (newSales) => {
   const salesValid = await salesValidate(newSales);
@@ -12,19 +11,15 @@ const addSales = async (newSales) => {
     }; 
   }
 
-  const allProducts = await models.getAllProducts();
-  let noHaveProduct = false;
+  const { id } = await models.createSale();
 
-  newSales.forEach((sales) => {
-    if (!allProducts.some((product) => product.id === sales.productId)) {
-      noHaveProduct = true;
-    }
-  });
-  
-  if (noHaveProduct) return { message: 'Product not found', statusError: NOT_FOUND };
-  
-  const result = await models.addSales(newSales);
-  return result;
+  await Promise.all(newSales
+    .map((newSale) => models.addSales(newSale)));
+
+  return {
+    id,
+    itemsSold: [...newSales],
+  };
 };
 
 module.exports = addSales;
