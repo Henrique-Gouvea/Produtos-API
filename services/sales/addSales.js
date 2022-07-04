@@ -6,15 +6,15 @@ const addSales = async (newSales) => {
 
   if (salesValid) {
     return {
-     message: salesValid.message,
-     statusError: salesValid.statusError,
-    }; 
+      message: salesValid.message,
+      statusError: salesValid.statusError,
+    };
   }
 
   const { id } = await models.createSale();
 
   await Promise.all(newSales
-    .map((newSale) => models.addSales(newSale)));
+    .map((newSale) => models.addSales(newSale.productId, newSale.quantity, id)));
 
   return {
     id,
@@ -23,10 +23,3 @@ const addSales = async (newSales) => {
 };
 
 module.exports = addSales;
-
-// 'number.min': '"productId" must be greater than or equal to 1',
-//   'any.required': '"productId" is required',
-//     }),
-
-//     'number.min': '"quantity" must be greater than or equal to 1',
-//     'any.required': '"quantity" is required',

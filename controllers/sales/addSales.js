@@ -11,7 +11,7 @@ const addSales = async (req, res) => {
     }
 
     const sales = await services.addSales(newSales);
-    console.log(sales);
+
     if (sales.message) {
       return res.status(sales.statusError).send({ message: sales.message });
     } 

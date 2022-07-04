@@ -11,7 +11,6 @@ const verifyError = (error) => {
 const verifyHaveProductDB = async (newSales) => {
   const allProducts = await models.getAllProducts();
   let noHaveProduct = false;
-  console.log(newSales);
   newSales.forEach((sales) => {
     if (!allProducts.some((product) => product.id === sales.productId)) {
       noHaveProduct = true;
@@ -21,7 +20,7 @@ const verifyHaveProductDB = async (newSales) => {
   if (noHaveProduct) return { message: 'Product not found', statusError: NOT_FOUND };
 };
 
-const salesValidate = (newSales) => {
+const salesValidate = async (newSales) => {
   let message = '';
   let statusError = '';
   newSales.forEach((sale) => {
@@ -34,13 +33,14 @@ const salesValidate = (newSales) => {
 
   if (message) return { message, statusError };
   
-  const haveProduct = verifyHaveProductDB(newSales);
+  const haveProduct = await verifyHaveProductDB(newSales);
 
-  if (haveProduct.message) {
+  if (haveProduct) {
     return {
      message: haveProduct.message, statusError: haveProduct.statusError,
     }; 
   }
+  return false;
 };
 
 module.exports = salesValidate;

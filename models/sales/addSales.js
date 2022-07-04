@@ -1,7 +1,7 @@
 const connect = require('../../helpers/connection');
 
-const addSales = async ({ saleId, productId, quantity }) => {
-  const [rows] = connect.execute(
+const addSales = async (productId, quantity, saleId) => {
+  const [rows] = await connect.execute(
     'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity)VALUES (?, ?, ?);',
     [saleId, productId, quantity],
   );
