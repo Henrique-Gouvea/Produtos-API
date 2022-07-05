@@ -4,9 +4,9 @@ const sinon = require('sinon');
 const controllers = require('../../../controllers');
 const services = require('../../../services');
 
-const { allProducts } = require('../../../mocks');
+const { allProducts } = require('../../mocks');
 
-describe('Verify function getAllProducts', () => {
+describe('Verify function getAllProducts controllers', () => {
 
     const res = {};
     const req = {};
