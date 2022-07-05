@@ -16,7 +16,6 @@ const verifyHaveProductDB = async (newSales) => {
       noHaveProduct = true;
     }
   });
-  console.log(noHaveProduct);
   if (noHaveProduct) return { message: 'Product not found', statusError: NOT_FOUND };
 };
 
@@ -43,4 +42,4 @@ const salesValidate = async (newSales) => {
   return false;
 };
 
-module.exports = salesValidate;
+module.exports = { salesValidate, verifyHaveProductDB };

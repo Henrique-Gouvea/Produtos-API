@@ -1,10 +1,10 @@
 const connection = require('../../helpers/connection');
 
 const deleteProduct = async (id) => {
-  await connection.execute(
+  connection.execute(
     'DELETE FROM products WHERE id = ?', [id],
   );
-  return id;
+  return true;
 };
 
 module.exports = deleteProduct;

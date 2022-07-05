@@ -1,10 +1,12 @@
 const models = require('../../models');
+const { verifyHaveProductDB } = require('../../validate/salesValidate');
 
 const deleteProduct = async (id) => {
-  console.log(id);
+  const haveInDB = await verifyHaveProductDB([{ productId: Number(id) }]);
   const result = await models.deleteProduct(id);
-  console.log(`result${result}`);
-  if (!result) return [];
+  console.log(haveInDB);
+  if (!result || haveInDB) return [];
+  console.log('teste');
   return result;
 };
 

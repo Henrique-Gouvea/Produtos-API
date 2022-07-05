@@ -1,5 +1,5 @@
 const models = require('../../models');
-const salesValidate = require('../../validate/salesValidate');
+const { salesValidate } = require('../../validate/salesValidate');
 
 const addSales = async (newSales) => {
   const salesValid = await salesValidate(newSales);
