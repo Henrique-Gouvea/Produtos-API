@@ -1,10 +1,10 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 
-const controllers = require('../../../../controllers');
-const services = require('../../../../services');
+const controllers = require('../../../controllers');
+const services = require('../../../services');
 
-const { allProducts } = require('../../../mocks');
+const { allProducts } = require('../../mocks');
 
 describe('Verify function getAllProducts controllers', () => {
 

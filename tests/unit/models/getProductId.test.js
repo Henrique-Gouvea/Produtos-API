@@ -1,9 +1,9 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
 
-const { allProducts } = require('../../../mocks');
-const models = require('../../../../models')
-const connection = require('../../../../helpers/connection')
+const { allProducts } = require('../../mocks');
+const models = require('../../../models')
+const connection = require('../../../helpers/connection')
 
 describe('Test getProduct Models for Id', () => {
 

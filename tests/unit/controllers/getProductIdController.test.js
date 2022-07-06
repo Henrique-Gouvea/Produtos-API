@@ -1,10 +1,10 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
 
-const controllers = require('../../../../controllers');
-const services = require('../../../../services');
+const controllers = require('../../../controllers');
+const services = require('../../../services');
 
-const { allProducts } = require('../../../mocks');
+const { allProducts } = require('../../mocks');
 
 describe('Test getById controllers', () => {
 

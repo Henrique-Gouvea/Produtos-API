@@ -1,9 +1,9 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
 
-const connection = require('../../../../helpers/connection')
-const models = require('../../../../models')
-const { allProducts } = require('../../../mocks')
+const connection = require('../../../helpers/connection')
+const models = require('../../../models')
+const { allProducts } = require('../../mocks')
 
 describe('Test getAllProducts Models', () => {
   beforeEach(async () => { 
